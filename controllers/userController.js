@@ -2,6 +2,19 @@ const User = require('../models/userModel')
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
+const getUserByEmail = async(req, res) =>{
+  const {email} = req.params
+  
+  const userByEmail = await User.find({email})
+  
+  if (!userByEmail){
+      return res.status(400).json({ error: 'No such schedule'})
+  }
+  
+  res.status(200).json(userByEmail)
+  
+  }
+
 // get all users
 const getUsers = async (req, res) => {
   const users = await User.find({}).sort({createdAt: -1})
@@ -133,6 +146,7 @@ const updateUser = async (req, res) => {
 }
 
 module.exports = {
+  getUserByEmail,
   getUsers,
   getUser,
   createUser,

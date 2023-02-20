@@ -1,5 +1,6 @@
 const express = require('express')
 const {
+  getUserByEmail,
   getUsers,
   getUser,
   createUser,
@@ -8,6 +9,8 @@ const {
 } = require('../controllers/userController')
 
 const router = express.Router()
+
+router.get('/:email', getUserByEmail)
 
 // GET all users
 router.get('/', getUsers)
