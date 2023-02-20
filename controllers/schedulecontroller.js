@@ -2,6 +2,19 @@ const Schedule = require('../models/schedulemodel')
 const mongoose = require('mongoose')
 
 
+const getSchedulesByEmail = async(req, res) =>{
+  const {email} = req.body
+  
+  const scheduleByEmail = await Schedule.find({email})
+  
+  if (!scheduleByEmail){
+      return res.status(400).json({ error: 'No such schedule'})
+  }
+  
+  res.status(200).json(scheduleByEmail)
+  
+  }
+  
 //get all schedule
 const getSchedules = async (req,res) => {
     const schedule = await Schedule.find({}).sort({createdAt: -1})
@@ -117,6 +130,7 @@ res.status(200).json(schedule)
 }
 
 module.exports ={
+    getSchedulesByEmail,
     getSchedules,
     getSchedule,
     createShcedule,

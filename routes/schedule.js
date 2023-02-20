@@ -1,5 +1,6 @@
 const express = require('express')
 const {
+    getSchedulesByEmail,
     getSchedules,
     getSchedule,
     createShcedule,
@@ -12,6 +13,8 @@ const {
 
 
 const router = express.Router()
+
+router.get('/email', getSchedulesByEmail)
 
 //Get all schedule
 
