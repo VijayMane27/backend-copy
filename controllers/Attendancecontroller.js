@@ -1,6 +1,19 @@
 const Attendance = require('../models/Attendancemodel')
 const mongoose = require('mongoose')
 
+const getAttendancesByEmail = async(req, res) =>{
+  const {email} = req.params
+  
+  const attendanceByEmail = await Attendance.find({email})
+  
+  if (!attendanceByEmail){
+      return res.status(400).json({ error: 'No such attendance'})
+  }
+  
+  res.status(200).json(attendanceByEmail)
+  
+  }
+  
 //get all attendance
 const getAttendances = async (req,res) => {
     const attendance = await Attendance.find({}).sort({createdAt: -1})
@@ -108,6 +121,7 @@ res.status(200).json(attendance)
 }
 
 module.exports ={
+    getAttendancesByEmail,
     getAttendances,
     getAttendance,
     createAttendance,

@@ -1,5 +1,6 @@
 const express = require('express')
 const {
+    getAttendancesByEmail,
     createAttendance,
     getAttendances,
     getAttendance,
@@ -10,6 +11,8 @@ const {
 
 
 const router = express.Router()
+
+router.get('/:email', getAttendancesByEmail)
 
 //Get all Attendance
 
