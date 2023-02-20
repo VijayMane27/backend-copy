@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 
 const getSchedulesByEmail = async(req, res) =>{
-  const {email} = req.body
+  const {email} = req.params
   
   const scheduleByEmail = await Schedule.find({email})
   

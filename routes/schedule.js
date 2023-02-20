@@ -14,7 +14,7 @@ const {
 
 const router = express.Router()
 
-router.get('/email', getSchedulesByEmail)
+router.get('/:email', getSchedulesByEmail)
 
 //Get all schedule
 
