@@ -1,11 +1,11 @@
 const Subject = require('../models/Subjectmodel')
 const mongoose = require('mongoose')
 
-const getSubjectsByEmail = async (req, res) => {
-  const { email } = req.params
+const getSubjectsByClass = async (req, res) => {
+  const { Class } = req.params
 
   try {
-    const subjects = await Subject.find({ email })
+    const subjects = await Subject.find({ Class })
 
     if (subjects.length === 0) {
       return res.status(404).json({ error: 'No subjects found' })
@@ -98,7 +98,7 @@ const updateSubject = async (req, res) => {
 }
 
 module.exports = {
-  getSubjectsByEmail,
+  getSubjectsByClass,
   getSubjects,
   getSubject,
   createSubject,
