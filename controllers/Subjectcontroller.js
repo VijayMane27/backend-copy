@@ -48,14 +48,14 @@ const getSubject = async (req, res) => {
 }
 
 const createSubject = async (req, res) => {
-  const { FYIT, SYIT, TYIT } = req.body
+  const { NAME } = req.body
 
-  if (!FYIT || !SYIT || !TYIT) {
+  if (!NAME) {
     return res.status(400).json({ error: 'Please fill in all fields' })
   }
 
   try {
-    const subject = await Subject.create({ FYIT, SYIT, TYIT })
+    const subject = await Subject.create({ NAME })
     res.status(201).json(subject)
   } catch (err) {
     res.status(500).json({ error: err.message })
