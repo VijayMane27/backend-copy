@@ -1,16 +1,16 @@
 const express = require('express')
 const {
-    getSubjectsByEmail,
     getSubjects,
     getSubject,
     createSubject,
     deleteSubject,
-    updateSubject
+    updateSubject,
+    getSubjectsByClass
 } = require('../controllers/Subjectcontroller')
 
 const router = express.Router()
 
-router.get('/email/:email', getSubjectsByEmail)
+router.get('/Class/:Class', getSubjectsByClass)
 
 // Get all subjects
 router.get('/', getSubjects)
