@@ -10,7 +10,7 @@ const {
 
 const router = express.Router()
 
-router.get('/Class/:Class', getSubjectsByClass)
+router.get('/Subject/:Class', getSubjectsByClass)
 
 // Get all subjects
 router.get('/', getSubjects)
