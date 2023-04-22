@@ -10,6 +10,7 @@ const detailRoutes = require('./routes/detail')
 const scheduleRoutes = require('./routes/schedule')
 const attendanceRoutes = require('./routes/Attendance')
 const authRoutes = require('./routes/auth')
+const SubjectRoutes = require('./routes/Subject')
 
 
 //express app
@@ -31,7 +32,7 @@ app.use( '/api/detail' ,detailRoutes)
 app.use('/api/schedule',scheduleRoutes)
 app.use('/api/attendance',attendanceRoutes)
 app.use('/api/auth', authRoutes)
-
+app.use('/api/Subject',SubjectRoutes)
 //connect to db
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
