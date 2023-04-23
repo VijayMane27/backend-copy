@@ -5,7 +5,7 @@ const getSubjectsByClass = async (req, res) => {
   const { Class } = req.params;
 
   try {
-    const subjects = await Subject.find({ Class });
+    const subjects = await Subject.find({ Class: Class.toString() });
 
     if (subjects.length === 0) {
       return res.status(404).json({ error: 'No subjects found' });
@@ -16,6 +16,7 @@ const getSubjectsByClass = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 
 const getSubjects = async (req, res) => {
