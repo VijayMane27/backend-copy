@@ -8,7 +8,7 @@ const SubjectSchema = new Schema({
         required:true
     },
     Class:{
-        type:String,
+        type: String,
         required:true
     }       
 }, { timestamps: true})
