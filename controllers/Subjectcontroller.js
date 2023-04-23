@@ -8,13 +8,16 @@ const getSubjectsByClass = async (req, res) => {
   const { Class } = req.params;
 
   try {
-    const subjects = await Subject.find({ Class });
+    const subjects = await Subject.find({ Class }).select({ "NAME": 1, "_id": 0});
+
+    var response = [];
+    subjects.map(obj => response.push(obj["NAME"]))
 
     if (subjects.length === 0) {
       return res.status(404).json({ error: 'No subjects found' });
     }
-    console.log(subjects)
-    res.status(200).json(subjects);
+
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
