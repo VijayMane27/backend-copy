@@ -2,20 +2,21 @@ const Subject = require('../models/Subjectmodel')
 const mongoose = require('mongoose')
 
 const getSubjectsByClass = async (req, res) => {
-  const { Class } = req.params
+  const { Class } = req.params;
 
   try {
-    const subjects = await Subject.find({ Class })
+    const subjects = await Subject.find({ Class });
 
     if (subjects.length === 0) {
-      return res.status(404).json({ error: 'No subjects found' })
+      return res.status(404).json({ error: 'No subjects found' });
     }
 
-    res.status(200).json(subjects)
+    res.status(200).json(subjects);
   } catch (err) {
-    res.status(500).json({ error: err.message })
+    res.status(500).json({ error: err.message });
   }
-}
+};
+
 
 const getSubjects = async (req, res) => {
   try {
