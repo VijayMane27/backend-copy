@@ -2,6 +2,9 @@ const Subject = require('../models/Subjectmodel')
 const mongoose = require('mongoose')
 
 const getSubjectsByClass = async (req, res) => {
+
+  console.log(req.params);
+
   const { Class } = req.params;
 
   try {
@@ -10,7 +13,7 @@ const getSubjectsByClass = async (req, res) => {
     if (subjects.length === 0) {
       return res.status(404).json({ error: 'No subjects found' });
     }
-
+    console.log(subjects)
     res.status(200).json(subjects);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -34,6 +37,7 @@ const getSubjects = async (req, res) => {
 }
 
 const getSubject = async (req, res) => {
+
   const { id } = req.params
 
   try {
