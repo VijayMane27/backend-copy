@@ -45,7 +45,9 @@ res.status(200).json(schedule)
 //create a new schedule
 
 const createShcedule = async (req , res) => {
-    const { email,date,className,timeFrom, timeTo, course,notes} = req.body
+    const { email,date,className,timeFrom, course, timeTo,notes} = req.body
+
+    console.log(req.body);
    
     let emptyFields = []
     if (!email) {
@@ -70,16 +72,18 @@ const createShcedule = async (req , res) => {
     emptyFields.push('notes')
   }
   if (emptyFields.length > 0) {
+    console.log("Empty Fields" , error.message);
     return res.status(400).json({ error: 'Please fill in all fields', emptyFields })
   }
 
     //add doc to db
 
     try{
-    const schedule = await Schedule.create({email,date,className,timeFrom, timeTo, course,notes })
+    const schedule = await Schedule.create({email,date,className,timeFrom,course, timeTo, notes })
     res.status(200).json(schedule)
     }catch(error){
        res.status(400).json({error: error.message})
+       console.log(error.message);
     }
 }
 
