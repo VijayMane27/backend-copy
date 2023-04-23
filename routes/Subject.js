@@ -22,7 +22,7 @@ router.get('/:id', getSubject)
 router.post('/', createSubject)
 
 // Delete a subject
-router.delete('/:id', deleteSubject)
+router.delete('/:NAME', deleteSubject)
 
 // Update a subject
 router.patch('/:id', updateSubject)

@@ -72,10 +72,10 @@ const createSubject = async (req, res) => {
 }
 
 const deleteSubject = async (req, res) => {
-  const { id } = req.params
+  const { NAME } = req.params
 
   try {
-    const subject = await Subject.findByIdAndDelete(id)
+    const subject = await Subject.findOneAndDelete({ NAME });
 
     if (!subject) {
       return res.status(404).json({ error: 'No subject found' })
